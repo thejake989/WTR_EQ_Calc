@@ -1,3 +1,4 @@
+//Function will allow whole number dimensions to be input.
 function parseDimension(dimension) {
   const regex = /^(\d+)'?(\d*)"?$/;
   const match = dimension.match(regex);
@@ -10,6 +11,8 @@ function parseDimension(dimension) {
     return null;
   }
 }
+
+//Function to calculate the number of air movers needed for a given room.
 function calculateAirMovers() {
   const lengthInput = document.getElementById("length").value;
   const widthInput = document.getElementById("width").value;
@@ -19,7 +22,7 @@ function calculateAirMovers() {
   const width = parseDimension(widthInput);
 
   if (length === null || width === null) {
-    alert("Please enter valid room dimensions (e.g., 14'3\").");
+    alert("Please enter valid room dimensions (Ft, Inches).");
     return;
   }
 
@@ -36,6 +39,7 @@ function calculateAirMovers() {
   ).innerHTML = `You will need ${airMovers} air movers for this room.`;
 }
 
+//Clears the data
 function clearData() {
   document.getElementById("length").value = "";
   document.getElementById("width").value = "";
