@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Air Mover Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-100">
+    <div class="owl-carousel owl-theme">
+        <div class="item">
+            <div class="bg-white p-10 rounded-lg shadow-md text-center">
+                <h1 class="text-2xl mb-4">Air Mover Calculator for Water Mitigation</h1>
+                <p class="mb-2">Enter the room dimensions:</p>
+                <input type="number" id="length" placeholder="Length (ft)" min="0" class="w-full p-2 mb-2 border border-gray-300 rounded" />
+                <input type="number" id="width" placeholder="Width (ft)" min="0" class="w-full p-2 mb-4 border border-gray-300 rounded" />
+                <p class="mb-2">Enter the number of bump outs over 16":</p>
+                <input
+                    type="number"
+                    id="bumpOuts"
+                    placeholder="Number of bump outs"
+                    min="0"
+                    class="w-full p-2 mb-4 border border-gray-300 rounded"
+                />
+                <button onclick="calculateAirMovers()" class="bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded">Calculate Air Movers</button>
+                <p id="result" class="mt-4"></p>
+            </div>
+        </div>
+        <!-- Add more carousel items here -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="./script.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".owl-carousel").owlCarousel({
+                items: 1,
+                loop: true,
+                margin: 10,
+                autoplay: true,
+                autoplayTimeout: 5000,
+                autoplayHoverPause: true,
+            });
+        });
+    </script>
+</body>
+</html>
