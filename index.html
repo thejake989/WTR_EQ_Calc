@@ -14,73 +14,90 @@
   >
     <div class="flex">
       <div class="space-y-6">
-        <div class="bg-white p-10 rounded-lg shadow-md text-center">
-          <h1 class="text-2xl mb-4">Air Mover Calculator for Water Mitigation</h1>
-          <p class="mb-2">Enter the room dimensions:</p>
-          <input
-            type="text"
-            id="length"
-            placeholder="Length (Ft, Inches)"
-            class="w-full p-2 mb-2 border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            id="width"
-            placeholder="Width (Ft, Inches)"
-            class="w-full p-2 mb-4 border border-gray-300 rounded"
-          />
-          <p class="mb-2">Enter the number of bump outs over 16":</p>
-          <input
-            type="number"
-            id="bumpOuts"
-            placeholder="# of bump outs"
-            min="0"
-            class="w-full p-2 mb-4 border border-gray-300 rounded"
-          />
-          <button
-            onclick="calculateAirMovers()"
-            class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded mr-2"
-          >
-            Calculate Air Movers
-          </button>
-          <button
-            onclick="clearData()"
-            class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
-          >
-            Clear
-          </button>
-          <p id="result" class="mt-4"></p>
-        </div>
-      <!-- Dehumidifier Calculator Card -->
-      <div class="bg-white p-10 rounded-lg shadow-md text-center">
-        <h1 class="text-2xl mb-4">Dehumidifier Calculator</h1>
-        <p class="mb-2">Enter the room dimensions:</p>
+        <!--Air Mover Calculator Card-->
+    <div class="flex">
+        <div class="space-y-6">
+          <div class="bg-white p-10 rounded-lg shadow-md text-center">
+            <h1 class="text-2xl mb-4">Air Mover Calculator for Water Mitigation</h1>
+            <p class="mb-2">Enter the room dimensions:</p>
+            <input
+              type="text"
+              id="length"
+              placeholder="Length (Ft, Inches)"
+              class="w-full p-2 mb-2 border border-gray-300 rounded"
+            />
+            <input
+              type="text"
+              id="width"
+              placeholder="Width (Ft, Inches)"
+              class="w-full p-2 mb-4 border border-gray-300 rounded"
+            />
+            <p class="mb-2">Enter the number of bump outs over 16":</p>
+            <input
+              type="number"
+              id="bumpOuts"
+              placeholder="# of bump outs"
+              min="0"
+              class="w-full p-2 mb-4 border border-gray-300 rounded"
+            />
+            <button
+              onclick="calculateAirMovers()"
+              class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded mr-2"
+            >
+              Calculate Air Movers
+            </button>
+            <button
+              onclick="clearData()"
+              class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded"
+            >
+              Clear
+            </button>
+            <p id="result" class="mt-4"></p>
+          </div>
 
-        <input
-          type="text"
-          id="height"
-          placeholder="Height (Ft, Inches)"
-          class="w-full p-2 mb-4 border border-gray-300 rounded"
-        />
+  <!-- Dehumidifier Calculator Card -->
+<div class="bg-white p-10 rounded-lg shadow-md text-center">
+    <h1 class="text-2xl mb-4">Dehumidifier Calculator</h1>
+    <p class="mb-2">Enter the room dimensions:</p>
+  
+    <input
+      type="text"
+      id="ceilingHeight"
+      placeholder="Height (Ft, Inches)"
+      class="w-full p-2 mb-4 border border-gray-300 rounded"
+    />
+  
+    <p class="mb-2">Select the water damage class:</p>
+    <select
+      id="waterDamageClass"
+      class="w-full p-2 mb-4 border border-gray-300 rounded"
+    >
+      <option value="1">Class 1</option>
+      <option value="2">Class 2</option>
+      <option value="3">Class 3</option>
+      <option value="4">Class 4</option>
+    </select>
+  
+    <p class="mb-2">Enter the dehumidifier capacity (Pints per Day):</p>
+    <input
+      type="number"
+      id="dehumidifierCapacity"
+      placeholder="Pints per Day"
+      min="0"
+      class="w-full p-2 mb-4 border border-gray-300 rounded"
+    />
+  
+    <button
+      onclick="calculateDehumidifiers()"
+      class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded"
+    >
+      Calculate Dehumidifiers
+    </button>
+    <p id="dehumidifierResult" class="mt-4"></p>
+</div>
 
-        <p class="mb-2">Enter the dehumidifier capacity (Pints per Day):</p>
-        <input
-          type="number"
-          id="pintsPerDay"
-          placeholder="Pints per Day"
-          min="0"
-          class="w-full p-2 mb-4 border border-gray-300 rounded"
-        />
-
-        <button
-          onclick="calculateDehumidifiers()"
-          class="bg-green-600 hover:bg-green-500 text-white py-2 px-4 rounded"
-        >
-          Calculate Dehumidifiers
-        </button>
-        <p id="dehumidifierResult" class="mt-4"></p>
-      </div>
-    </div>
+  
+  
 
     <!--JS Link-->
     <script src="./script.js"></script>

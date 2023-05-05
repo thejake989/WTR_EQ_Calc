@@ -47,35 +47,56 @@ function clearData() {
   document.getElementById("result").innerHTML = "";
 }
 
-$(document).ready(function () {
-  $(".owl-carousel").owlCarousel({
-    loop: true,
-    margin: 10,
-    nav: true,
-    items: 1,
-    stagePadding: 50,
-    smartSpeed: 450,
-  });
-});
-
+//Dehumidifier calculator
 function calculateDehumidifiers() {
   const lengthInput = document.getElementById("length").value;
   const widthInput = document.getElementById("width").value;
   const ceilingHeightInput = document.getElementById("ceilingHeight").value;
+  const dehumidifierCapacityInput = document.getElementById(
+    "dehumidifierCapacity"
+  ).value;
+  const waterDamageClassInput =
+    document.getElementById("waterDamageClass").value;
+  const dehumidifierPintsPerDayInput = document.getElementById(
+    "dehumidifierPintsPerDay"
+  ).value;
 
   const length = parseDimension(lengthInput);
   const width = parseDimension(widthInput);
   const ceilingHeight = parseDimension(ceilingHeightInput);
+  const dehumidifierCapacity = parseInt(dehumidifierCapacityInput);
+  const waterDamageClass = parseInt(waterDamageClassInput);
+  const dehumidifierPintsPerDay = parseInt(dehumidifierPintsPerDayInput);
 
-  if (length === null || width === null || ceilingHeight === null) {
-    alert("Please enter valid dimensions (Ft, Inches).");
+  if (
+    length === null ||
+    width === null ||
+    ceilingHeight === null ||
+    !dehumidifierCapacity ||
+    !waterDamageClass ||
+    !dehumidifierPintsPerDay
+  ) {
+    alert(
+      "Please enter valid room dimensions, dehumidifier capacity, water damage class, and dehumidifier pints per day."
+    );
     return;
   }
 
   const volume = length * width * ceilingHeight;
-  const dehumidifiers = Math.ceil(volume / 7000);
+  const classDivisor =
+    waterDamageClass === 1
+      ? 100
+      : waterDamageClass === 2
+      ? 50
+      : waterDamageClass === 3
+      ? 40
+      : waterDamageClass === 4
+      ? 50
+      : 0; // Set the class divisor based on the water damage class
+  const pintsOfWater = volume / classDivisor;
+  const dehumidifiers = Math.ceil(pintsOfWater / dehumidifierPintsPerDay);
 
   document.getElementById(
     "dehumidifierResult"
-  ).innerHTML = `You will need ${dehumidifiers} dehumidifiers for this room.`;
+  ).innerHTML = `You will need ${dehumidifiers} dehumidifiers for this room with a cubic footage of ${volume} cubic feet.`;
 }
