@@ -47,7 +47,7 @@ function clearData() {
   document.getElementById("result").innerHTML = "";
 }
 
-//Dehumidifier calculator
+// Dehumidifier calculator
 function calculateDehumidifiers() {
   const lengthInput = document.getElementById("length").value;
   const widthInput = document.getElementById("width").value;
@@ -57,27 +57,22 @@ function calculateDehumidifiers() {
   ).value;
   const waterDamageClassInput =
     document.getElementById("waterDamageClass").value;
-  const dehumidifierPintsPerDayInput = document.getElementById(
-    "dehumidifierPintsPerDay"
-  ).value;
 
   const length = parseDimension(lengthInput);
   const width = parseDimension(widthInput);
   const ceilingHeight = parseDimension(ceilingHeightInput);
   const dehumidifierCapacity = parseInt(dehumidifierCapacityInput);
   const waterDamageClass = parseInt(waterDamageClassInput);
-  const dehumidifierPintsPerDay = parseInt(dehumidifierPintsPerDayInput);
 
   if (
     length === null ||
     width === null ||
     ceilingHeight === null ||
     !dehumidifierCapacity ||
-    !waterDamageClass ||
-    !dehumidifierPintsPerDay
+    !waterDamageClass
   ) {
     alert(
-      "Please enter valid room dimensions, dehumidifier capacity, water damage class, and dehumidifier pints per day."
+      "Please enter valid room dimensions, dehumidifier capacity, and water damage class."
     );
     return;
   }
@@ -94,7 +89,7 @@ function calculateDehumidifiers() {
       ? 50
       : 0; // Set the class divisor based on the water damage class
   const pintsOfWater = volume / classDivisor;
-  const dehumidifiers = Math.ceil(pintsOfWater / dehumidifierPintsPerDay);
+  const dehumidifiers = Math.ceil(pintsOfWater / dehumidifierCapacity);
 
   document.getElementById(
     "dehumidifierResult"
